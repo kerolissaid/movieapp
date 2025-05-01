@@ -14,8 +14,6 @@ const movieSchema = new mongoose.Schema({
   releaseYear: {
     type: Number,
     required: true,
-    min: [1888, 'No movies existed before 1888'],
-    max: [new Date().getFullYear() + 2, 'Release year seems too far in future']
   },
   runtime: {
     type: Number,
@@ -52,5 +50,7 @@ const movieSchema = new mongoose.Schema({
 
 // Text index for search
 movieSchema.index({ title: 'text', plot: 'text' });
+// Unique index to prevent duplicate movies
+movieSchema.index({ title: 1, releaseYear: 1 }, { unique: true });
 
 module.exports = mongoose.model('Movie', movieSchema);
