@@ -11,15 +11,8 @@ const reviewSchema = new mongoose.Schema({
     ref: 'User',
     required: [true, 'User is required']
   },
-  rating: {
-    type: Number,
-    required: true,
-    min: 1,
-    max: 5
-  },
   comment: {
-    type: String,
-    maxlength: [1000, 'Comment cannot exceed 1000 characters']
+    type: String
   }
 }, {
   timestamps: true
