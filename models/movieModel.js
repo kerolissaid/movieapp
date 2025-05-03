@@ -44,6 +44,10 @@ const movieSchema = new mongoose.Schema({
     required: true
   },
   trailerUrl: String,
+  videoUrl: {
+  type: String,
+  required: [true, 'Video URL is required']
+  }
 }, {
   timestamps: true
 });
